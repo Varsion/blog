@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://gems.ruby-china.com'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
@@ -28,6 +28,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "factory_bot" # factory data
+  gem "faker" # faker data
+  gem "rspec-rails", "~> 5.0.0" # TDD rspec
+  gem "rspec-json_expectations" # rspec plugin
 end
 
 group :development do
