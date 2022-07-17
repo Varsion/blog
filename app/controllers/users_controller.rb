@@ -14,11 +14,25 @@ class UsersController < ApplicationController
   end
 
   def login
-    
+    user = User.find_by(email: login_params[:email])
+    if user && user.authenticate(login_params[:password])
+      render(json: {
+        message: "login success",
+        token: user.login
+      })
+    else
+      render(json: {
+        message: "Invalid email or password"
+      })
+    end
   end
 
   private
   def create_params
     params.require(:user).permit(:name, :email, :password)
+  end
+
+  def login_params
+    params.require(:user).permit(:email, :password)
   end
 end
